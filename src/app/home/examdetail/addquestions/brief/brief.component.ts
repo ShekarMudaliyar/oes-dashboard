@@ -14,4 +14,7 @@ export class BriefComponent implements OnInit {
   constructor() {}
 
   ngOnInit() {}
+  removeQues(i) {
+    console.log(i);
+  }
 }

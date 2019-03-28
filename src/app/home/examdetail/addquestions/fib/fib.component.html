@@ -1,11 +1,22 @@
 <div class="list-view">
   <div *ngFor="let fib of fibs; let i = index" class="list-group">
     <p class="list-group-item list-group-item-action">
-      {{ i }} :
-      <label
-        ><b>{{ fib.question }}</b></label
-      ><br />
-      <span>-> {{ fib.answer }}</span>
+      <span style="float:left">
+        {{ i }} :
+        <label
+          ><b>{{ fib.question }}</b></label
+        ><br />
+        <span>-> {{ fib.answer }}</span>
+      </span>
+      <span style="float:right"
+        ><button
+          type="button"
+          class="btn btn-danger"
+          (click)="removeQues(brief.id)"
+        >
+          Remove
+        </button>
+      </span>
     </p>
   </div>
 </div>

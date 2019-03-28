@@ -1,11 +1,22 @@
 <div class="list-view">
   <div *ngFor="let brief of briefs; let i = index" class="list-group">
     <p class="list-group-item list-group-item-action">
-      {{ i }} :
-      <label
-        ><b>{{ brief.question }}</b></label
-      ><br />
-      <span>-> {{ brief.answer }}</span>
+      <span style="float:left">
+        {{ i }} :
+        <label
+          ><b>{{ brief.question }}</b></label
+        ><br />
+        <span>-> {{ brief.answer }}</span>
+      </span>
+      <span style="float:right"
+        ><button
+          type="button"
+          class="btn btn-danger"
+          (click)="removeQues(brief.id)"
+        >
+          Remove
+        </button>
+      </span>
     </p>
   </div>
 </div>

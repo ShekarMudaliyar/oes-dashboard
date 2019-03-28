@@ -1,17 +1,28 @@
 <div class="list-view">
   <div *ngFor="let mcq of mcqs; let i = index" class="list-group">
     <p class="list-group-item list-group-item-action">
-      {{ i }} :
-      <label
-        ><b>{{ mcq.question }}</b></label
-      ><br />
-      <span>-> {{ mcq.op1 }}</span>
-      <br />
-      <span>-> {{ mcq.op2 }}</span>
-      <br />
-      <span>-> {{ mcq.op3 }}</span>
-      <br />
-      <span>-> {{ mcq.op4 }}</span>
+      <span style="float:left">
+        {{ i }} :
+        <label
+          ><b>{{ mcq.question }}</b></label
+        ><br />
+        <span>-> {{ mcq.op1 }}</span>
+        <br />
+        <span>-> {{ mcq.op2 }}</span>
+        <br />
+        <span>-> {{ mcq.op3 }}</span>
+        <br />
+        <span>-> {{ mcq.op4 }}</span>
+      </span>
+      <span style="float:right"
+        ><button
+          type="button"
+          class="btn btn-danger"
+          (click)="removeQues(brief.id)"
+        >
+          Remove
+        </button>
+      </span>
     </p>
   </div>
 </div>
