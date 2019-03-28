@@ -1,1 +1,15 @@
 @import "../../../../styles.scss";
+.tabs {
+  background: $dark-color;
+  color: white;
+}
+a:hover,
+a:focus,
+a:active {
+  color: white;
+  text-decoration: none;
+  color: inherit;
+}
+.label-class {
+  color: white;
+}

@@ -6,5 +6,14 @@ import { HttpClient } from "@angular/common/http";
 })
 export class DataserviceService {
   constructor(private http: HttpClient) {}
-  authUser(email: string, pass: string) {}
+  authUser(email: string, pass: string) {
+    return this.http.post(
+      "http://localhost:3000/auth",
+      {
+        email: email,
+        pass: pass
+      },
+      { responseType: "text" }
+    );
+  }
 }

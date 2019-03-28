@@ -1,6 +1,59 @@
 <nav class=" nav navbar navbar-dark bg-dark ">
   <div class="navbar-brand" style="width:100%;">
-    <span class="alignleft"><button class="back-button">Back</button></span>
-    <span class="aligncenter">Add Date</span>
+    <span class="alignleft"
+      ><button (click)="backBut()" class="back-button">Back</button></span
+    >
+    <span class="aligncenter">Add Date and Time</span>
   </div>
 </nav>
+<div class="list-view">
+  <div *ngFor="let date of dates; let i = index" class="list-group">
+    <p class="list-group-item list-group-item-action">
+      {{ date.date }} : {{ date.timefrom }} - {{ date.timeto }}
+    </p>
+  </div>
+</div>
+
+<div class="form-date">
+  <label for="date">Add new Date and Time</label>
+  <hr />
+  <form (submit)="addDate($event)">
+    <div class="input-group mb-3">
+      <div class="input-group-prepend">
+        <span class="input-group-text" id="basic-addon3">Date:</span>
+      </div>
+      <input
+        type="text"
+        class="form-control"
+        id="date"
+        aria-describedby="basic-addon3"
+      />
+    </div>
+    <div class="input-group mb-3">
+      <div class="input-group-prepend">
+        <span class="input-group-text" id="basic-addon3">Time from:</span>
+      </div>
+      <input
+        type="text"
+        class="form-control"
+        id="timefrom"
+        aria-describedby="basic-addon3"
+      />
+    </div>
+    <div class="input-group mb-3">
+      <div class="input-group-prepend">
+        <span class="input-group-text" id="basic-addon3">Time to:</span>
+      </div>
+      <input
+        type="text"
+        class="form-control"
+        id="timeto"
+        aria-describedby="basic-addon3"
+      />
+    </div>
+
+    <button type="submit" class="btn btn-dark">
+      Add Date
+    </button>
+  </form>
+</div>

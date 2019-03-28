@@ -13,9 +13,7 @@ export class ExamdetailComponent implements OnInit {
   addDate() {
     this.router.navigate(["/adddate"]);
   }
-  addTime() {
-    this.router.navigate(["/addtime"]);
-  }
+
   addStud() {
     this.router.navigate(["/addstudents"]);
   }
