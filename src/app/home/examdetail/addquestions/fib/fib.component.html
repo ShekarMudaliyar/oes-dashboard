@@ -1,3 +1,43 @@
-<p>
-  fib works!
-</p>
+<div class="list-view">
+  <div *ngFor="let fib of fibs; let i = index" class="list-group">
+    <p class="list-group-item list-group-item-action">
+      {{ i }} :
+      <label
+        ><b>{{ fib.question }}</b></label
+      ><br />
+      <span>-> {{ fib.answer }}</span>
+    </p>
+  </div>
+</div>
+<div class="form">
+  <label for="date">Add new FIB</label>
+  <hr />
+  <form (submit)="addFib($event)">
+    <div class="input-group">
+      <div class="input-group-prepend">
+        <span class="input-group-text">Question(add _ for blanks):</span>
+      </div>
+      <textarea
+        class="form-control"
+        aria-label="With textarea"
+        id="question"
+      ></textarea>
+    </div>
+    <br />
+    <div class="input-group mb-3">
+      <div class="input-group-prepend">
+        <span class="input-group-text" id="basic-addon3">Answer:</span>
+      </div>
+      <input
+        type="text"
+        class="form-control"
+        id="answer"
+        aria-describedby="basic-addon3"
+      />
+    </div>
+
+    <button type="submit" class="btn btn-dark">
+      Add
+    </button>
+  </form>
+</div>

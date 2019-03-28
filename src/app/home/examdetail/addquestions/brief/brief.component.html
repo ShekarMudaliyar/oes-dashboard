@@ -1,3 +1,42 @@
-<p>
-  brief works!
-</p>
+<div class="list-view">
+  <div *ngFor="let brief of briefs; let i = index" class="list-group">
+    <p class="list-group-item list-group-item-action">
+      {{ i }} :
+      <label
+        ><b>{{ brief.question }}</b></label
+      ><br />
+      <span>-> {{ brief.answer }}</span>
+    </p>
+  </div>
+</div>
+<div class="form">
+  <label for="date">Add new Brief</label>
+  <hr />
+  <form (submit)="addFib($event)">
+    <div class="input-group">
+      <div class="input-group-prepend">
+        <span class="input-group-text">Question:</span>
+      </div>
+      <textarea
+        class="form-control"
+        aria-label="With textarea"
+        id="question"
+      ></textarea>
+    </div>
+    <br />
+
+    <div class="input-group">
+      <div class="input-group-prepend">
+        <span class="input-group-text">Answer:</span>
+      </div>
+      <textarea
+        class="form-control"
+        aria-label="With textarea"
+        id="answer"
+      ></textarea>
+    </div>
+    <button type="submit" class="btn btn-dark">
+      Add
+    </button>
+  </form>
+</div>
