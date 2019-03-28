@@ -1,7 +1,29 @@
 /* You can add global styles to this file, and also import other style files */
 @import "~bootstrap/dist/css/bootstrap.min.css";
-
 $dark-color: #383838;
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+.alignleft {
+  float: left;
+  width: 33.33333%;
+  text-align: left;
+}
+.aligncenter {
+  float: left;
+  width: 33.33333%;
+  text-align: center;
+}
+.back-button {
+  border-radius: 10%;
+  background: $dark-color;
+  color: white;
+  border: none;
+  font-weight: bold;
+}

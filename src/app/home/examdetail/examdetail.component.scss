@@ -1,8 +1,9 @@
+@import "../../../styles.scss";
 .content {
   margin-top: 10px;
 }
 .card {
   margin: 5px;
-  background: #383838;
+  background: $dark-color;
   color: white;
 }

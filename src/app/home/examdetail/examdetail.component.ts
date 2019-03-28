@@ -28,4 +28,7 @@ export class ExamdetailComponent implements OnInit {
   results() {
     this.router.navigate(["/results"]);
   }
+  backHome() {
+    this.router.navigate(["home"]);
+  }
 }

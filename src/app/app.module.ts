@@ -14,7 +14,8 @@ import { AddstudentsComponent } from "./home/examdetail/addstudents/addstudents.
 import { AddquestionsComponent } from "./home/examdetail/addquestions/addquestions.component";
 import { AssessComponent } from "./home/examdetail/assess/assess.component";
 import { ResultsComponent } from "./home/examdetail/results/results.component";
-
+import { LoginComponent } from "./login/login.component";
+import { HttpClientModule } from "@angular/common/http";
 @NgModule({
   declarations: [
     AppComponent,
@@ -25,13 +26,15 @@ import { ResultsComponent } from "./home/examdetail/results/results.component";
     AddstudentsComponent,
     AddquestionsComponent,
     AssessComponent,
-    ResultsComponent
+    ResultsComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     AngularFireModule.initializeApp(config.firebase),
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

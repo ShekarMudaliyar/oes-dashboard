@@ -8,14 +8,13 @@ import { AddstudentsComponent } from "./home/examdetail/addstudents/addstudents.
 import { AddquestionsComponent } from "./home/examdetail/addquestions/addquestions.component";
 import { AssessComponent } from "./home/examdetail/assess/assess.component";
 import { ResultsComponent } from "./home/examdetail/results/results.component";
+import { LoginComponent } from "./login/login.component";
 
 const routes: Routes = [
-  { path: "", redirectTo: "/home", pathMatch: "full" },
+  { path: "", redirectTo: "/login", pathMatch: "full" },
   { path: "home", component: HomeComponent },
-  {
-    path: "examdetail",
-    component: ExamdetailComponent
-  },
+  { path: "login", component: LoginComponent },
+  { path: "examdetail", component: ExamdetailComponent },
   { path: "adddate", component: AdddateComponent },
   { path: "addtime", component: AddtimeComponent },
   { path: "addstudents", component: AddstudentsComponent },
