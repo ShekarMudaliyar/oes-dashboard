@@ -1,6 +1,51 @@
 <nav class=" nav navbar navbar-dark bg-dark ">
   <div class="navbar-brand" style="width:100%;">
-    <span class="alignleft"><button class="back-button">Back</button></span>
+    <span class="alignleft"
+      ><button class="back-button" (click)="backBtn()">Back</button></span
+    >
     <span class="aligncenter">Add Students</span>
   </div>
 </nav>
+
+<div class="custom-file" style="margin:5px;">
+  <input type="file" class="custom-file-input" id="customFile" />
+  <label class="custom-file-label" for="customFile">Choose file</label>
+</div>
+<div class="list-view">
+  <div class="row">
+    <p class="list-group-item   col-sm">
+      Cn
+    </p>
+    <p class="list-group-item   col-sm">
+      Rollno
+    </p>
+    <p class="list-group-item   col-sm">
+      Name
+    </p>
+    <p class="list-group-item   col-sm">
+      Email
+    </p>
+    <p class="list-group-item   col-sm">
+      Password
+    </p>
+  </div>
+  <div *ngFor="let stud of students; let i = index" class="list-group">
+    <div class="row">
+      <p class="list-group-item   col-sm">
+        {{ i }}
+      </p>
+      <p class="list-group-item   col-sm">
+        {{ stud.rollno }}
+      </p>
+      <p class="list-group-item   col-sm">
+        {{ stud.name }}
+      </p>
+      <p class="list-group-item   col-sm">
+        {{ stud.email }}
+      </p>
+      <p class="list-group-item   col-sm">
+        {{ stud.pass }}
+      </p>
+    </div>
+  </div>
+</div>

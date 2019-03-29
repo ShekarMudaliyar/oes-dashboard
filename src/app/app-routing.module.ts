@@ -12,6 +12,11 @@ import { FibComponent } from "./home/examdetail/addquestions/fib/fib.component";
 import { McqComponent } from "./home/examdetail/addquestions/mcq/mcq.component";
 import { BriefComponent } from "./home/examdetail/addquestions/brief/brief.component";
 import { CodeComponent } from "./home/examdetail/addquestions/code/code.component";
+import { AssesspageComponent } from "./home/examdetail/assess/assesspage/assesspage.component";
+import { AssessfibComponent } from "./home/examdetail/assess/assesspage/assessfib/assessfib.component";
+import { AssesscodeComponent } from "./home/examdetail/assess/assesspage/assesscode/assesscode.component";
+import { AssessbriefComponent } from "./home/examdetail/assess/assesspage/assessbrief/assessbrief.component";
+import { AssessmcqComponent } from "./home/examdetail/assess/assesspage/assessmcq/assessmcq.component";
 
 const routes: Routes = [
   { path: "", redirectTo: "/login", pathMatch: "full" },
@@ -31,7 +36,17 @@ const routes: Routes = [
     ]
   },
   { path: "assess", component: AssessComponent },
-  { path: "results", component: ResultsComponent }
+  { path: "results", component: ResultsComponent },
+  {
+    path: "assesspage",
+    component: AssesspageComponent,
+    children: [
+      { path: "assessfib", component: AssessfibComponent },
+      { path: "assessmcq", component: AssessmcqComponent },
+      { path: "assessbrief", component: AssessbriefComponent },
+      { path: "assesscode", component: AssesscodeComponent }
+    ]
+  }
 ];
 
 @NgModule({

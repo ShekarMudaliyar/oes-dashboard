@@ -1,0 +1,21 @@
+<nav class=" nav navbar navbar-dark bg-dark ">
+  <div class="navbar-brand" style="width:100%;">
+    <span class="alignleft"
+      ><button class="back-button" (click)="backBtn()">Back</button></span
+    >
+    <span class="aligncenter">Student</span>
+  </div>
+</nav>
+<nav mat-tab-nav-bar mat-align-tabs="center" class="tabs">
+  <a
+    mat-tab-link
+    *ngFor="let link of navlinks"
+    [routerLink]="link.path"
+    routerLinkActive
+    #rla="routerLinkActive"
+    [active]="rla.isActive"
+  >
+    <span class="label-class">{{ link.label }}</span></a
+  >
+</nav>
+<router-outlet></router-outlet>

@@ -1,6 +1,20 @@
 <nav class=" nav navbar navbar-dark bg-dark ">
   <div class="navbar-brand" style="width:100%;">
-    <span class="alignleft"><button class="back-button">Back</button></span>
+    <span class="alignleft"
+      ><button class="back-button" (click)="backBtn()">Back</button></span
+    >
     <span class="aligncenter">Assess</span>
   </div>
 </nav>
+<div *ngFor="let stud of students; let i = index" class="">
+  <div class="row list-group">
+    <p
+      class="list-group-item list-group-item-action  col-sm"
+      (click)="getAssess(stud)"
+    >
+      {{ stud.rollno }}
+
+      {{ stud.name }}
+    </p>
+  </div>
+</div>

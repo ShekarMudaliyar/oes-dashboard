@@ -23,6 +23,11 @@ import { FibComponent } from './home/examdetail/addquestions/fib/fib.component';
 import { McqComponent } from './home/examdetail/addquestions/mcq/mcq.component';
 import { BriefComponent } from './home/examdetail/addquestions/brief/brief.component';
 import { CodeComponent } from './home/examdetail/addquestions/code/code.component';
+import { AssesspageComponent } from './home/examdetail/assess/assesspage/assesspage.component';
+import { AssessfibComponent } from './home/examdetail/assess/assesspage/assessfib/assessfib.component';
+import { AssessmcqComponent } from './home/examdetail/assess/assesspage/assessmcq/assessmcq.component';
+import { AssessbriefComponent } from './home/examdetail/assess/assesspage/assessbrief/assessbrief.component';
+import { AssesscodeComponent } from './home/examdetail/assess/assesspage/assesscode/assesscode.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +43,12 @@ import { CodeComponent } from './home/examdetail/addquestions/code/code.componen
     FibComponent,
     McqComponent,
     BriefComponent,
-    CodeComponent
+    CodeComponent,
+    AssesspageComponent,
+    AssessfibComponent,
+    AssessmcqComponent,
+    AssessbriefComponent,
+    AssesscodeComponent
   ],
   imports: [
     BrowserModule,
