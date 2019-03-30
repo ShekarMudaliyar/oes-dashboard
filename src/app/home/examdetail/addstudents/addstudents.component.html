@@ -7,10 +7,16 @@
   </div>
 </nav>
 
-<div class="custom-file" style="margin:5px;">
-  <input type="file" class="custom-file-input" id="customFile" />
+<!-- <div class="custom-file" style="margin:5px;">
+  <input
+    type="file"
+    accept=".csv"
+    class="custom-file-input"
+    id="customFile"
+    (change)="convertFile($event)"
+  />
   <label class="custom-file-label" for="customFile">Choose file</label>
-</div>
+</div> -->
 <div class="list-view">
   <div class="row">
     <p class="list-group-item   col-sm">
@@ -48,4 +54,60 @@
       </p>
     </div>
   </div>
+</div>
+<div class="form">
+  <label for="date">Add new Student</label>
+  <hr />
+  <form (submit)="addStud($event)">
+    <div class="input-group mb-3">
+      <div class="input-group-prepend">
+        <span class="input-group-text" id="basic-addon3">Roll No:</span>
+      </div>
+      <input
+        type="text"
+        class="form-control"
+        id="rollno"
+        aria-describedby="basic-addon3"
+      />
+    </div>
+    <br />
+    <div class="input-group mb-3">
+      <div class="input-group-prepend">
+        <span class="input-group-text" id="basic-addon3">Name:</span>
+      </div>
+      <input
+        type="text"
+        class="form-control"
+        id="name"
+        aria-describedby="basic-addon3"
+      />
+    </div>
+    <br />
+    <div class="input-group mb-3">
+      <div class="input-group-prepend">
+        <span class="input-group-text" id="basic-addon3">Email:</span>
+      </div>
+      <input
+        type="text"
+        class="form-control"
+        id="email"
+        aria-describedby="basic-addon3"
+      />
+    </div>
+    <br />
+    <div class="input-group mb-3">
+      <div class="input-group-prepend">
+        <span class="input-group-text" id="basic-addon3">Password:</span>
+      </div>
+      <input
+        type="text"
+        class="form-control"
+        id="pass"
+        aria-describedby="basic-addon3"
+      />
+    </div>
+    <button type="submit" class="btn btn-dark">
+      Add Student
+    </button>
+  </form>
 </div>

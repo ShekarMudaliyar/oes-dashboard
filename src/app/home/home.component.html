@@ -2,9 +2,9 @@
   <p class="navbar-brand mb-0 h1">Online Examination System</p>
 </nav>
 <div class="details-container card">
-  <p>Name:Shekar</p>
-  <p>Designation:desig</p>
-  <p>Organization:org</p>
+  <p>Email:{{ user.email }}</p>
+  <p>Designation:{{ user.desig }}</p>
+  <p>Organization:{{ user.org }}</p>
 </div>
 <div class="examtitle ">
   <p class="lead">Exam List</p>
@@ -12,12 +12,26 @@
 <div class="list-view list-group">
   <div *ngFor="let ex of exam; let i = index" (click)="clicked(ex)">
     <p class="list-group-item list-group-item-action">
-      {{ ex.title }}
+      {{ ex.exam }}
     </p>
   </div>
 </div>
 <div class="addbutton">
-  <button type="button" class="btn btn-dark" (click)="btnclick()">
-    Add Exam
-  </button>
+  <form (submit)="btnclick($event)">
+    <div class="input-group mb-3">
+      <div class="input-group-prepend">
+        <span class="input-group-text" id="basic-addon3">Exam Name:</span>
+      </div>
+      <input
+        type="text"
+        class="form-control"
+        id="name"
+        aria-describedby="basic-addon3"
+      />
+    </div>
+
+    <button type="submit" class="btn btn-dark">
+      Add Exam
+    </button>
+  </form>
 </div>

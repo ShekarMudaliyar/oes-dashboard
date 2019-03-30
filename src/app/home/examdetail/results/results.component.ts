@@ -10,14 +10,14 @@ import { Student } from "src/app/models/student.model";
 export class ResultsComponent implements OnInit {
   students: Student[] = [
     {
-      id: 1,
+      id: "1",
       rollno: 1,
       name: "shekar",
       email: "shekar@gmail.com",
       pass: "shekar"
     },
     {
-      id: 2,
+      id: "2",
       rollno: 2,
       name: "shekar",
       email: "shekar@gmail.com",

@@ -1,3 +1,41 @@
-<p>
-  code works!
-</p>
+<div class="list-view">
+  <div *ngFor="let code of codes; let i = index" class="list-group">
+    <p class="list-group-item list-group-item-action">
+      <span style="float:left">
+        {{ i }} :
+        <label
+          ><b>{{ code.question }}</b></label
+        ><br />
+      </span>
+      <span style="float:right"
+        ><button
+          type="button"
+          class="btn btn-danger"
+          (click)="removeQues(brief.id)"
+        >
+          Remove
+        </button>
+      </span>
+    </p>
+  </div>
+</div>
+<div class="form">
+  <label for="date">Add new Code</label>
+  <hr />
+  <form (submit)="addCode($event)">
+    <div class="input-group">
+      <div class="input-group-prepend">
+        <span class="input-group-text">Question:</span>
+      </div>
+      <textarea
+        class="form-control"
+        aria-label="With textarea"
+        id="question"
+      ></textarea>
+    </div>
+    <br />
+    <button type="submit" class="btn btn-dark">
+      Add
+    </button>
+  </form>
+</div>

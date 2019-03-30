@@ -1,5 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { FIB } from "src/app/models/fib.model";
+import { DataserviceService } from "src/app/services/dataservice.service";
+import { LocalStorage } from "@ngx-pwa/local-storage";
 
 @Component({
   selector: "app-fib",
@@ -7,20 +9,31 @@ import { FIB } from "src/app/models/fib.model";
   styleUrls: ["./fib.component.scss"]
 })
 export class FibComponent implements OnInit {
-  fibs: FIB[] = [
-    {
-      id: 1,
-      question: "this is __ question 1",
-      answer: "answer"
-    },
-    {
-      id: 2,
-      question: "this is __ question 2",
-      answer: "answer"
-    }
-  ];
-  constructor() {}
+  fibs;
+  userid;
+  examid;
+  constructor(private local: LocalStorage, private data: DataserviceService) {
+    this.local.getItem("user").subscribe(user => {
+      this.userid = user._id;
+      this.local.getItem("examid").subscribe(examid => {
+        this.examid = examid;
+        this.data.getQues(this.userid, this.examid).subscribe(date => {
+          let temp = JSON.parse(date);
+          console.log(temp);
+          this.fibs = temp.fib;
+        });
+      });
+    });
+  }
 
   ngOnInit() {}
-  addFib(event) {}
+  addFib(event) {
+    event.preventDefault();
+    let ques = event.target.querySelector("#question").value;
+    let ans = event.target.querySelector("#answer").value;
+    this.data.addFib(ques, ans, this.userid, this.examid).subscribe(data => {
+      console.log(data);
+      window.location.reload();
+    });
+  }
 }

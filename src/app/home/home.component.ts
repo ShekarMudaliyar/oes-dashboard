@@ -1,10 +1,11 @@
 import { Component, OnInit } from "@angular/core";
 import { Router } from "@angular/router";
+import { LocalStorage } from "@ngx-pwa/local-storage";
+import { DataserviceService } from "../services/dataservice.service";
 
 class Exams {
-  id: number;
-  title: string;
-  date: string;
+  id: string;
+  exam: string;
 }
 @Component({
   selector: "app-home",
@@ -12,28 +13,40 @@ class Exams {
   styleUrls: ["./home.component.scss"]
 })
 export class HomeComponent implements OnInit {
-  exam: Exams[];
-  constructor(private router: Router) {
-    this.exam = [
-      {
-        id: 1,
-        title: "first exam",
-        date: "12-3-12"
-      },
-      {
-        id: 2,
-        title: "second exam",
-        date: "23-3-43"
-      }
-    ];
+  exam;
+  user;
+  constructor(
+    private router: Router,
+    private local: LocalStorage,
+    private data: DataserviceService
+  ) {
+    this.local.getItem("user").subscribe(data => {
+      this.user = data;
+      let userid = data._id;
+      console.log(userid);
+      this.data.getExams(userid).subscribe(exam => {
+        // if (exam != null) {
+        let examdata = JSON.parse(exam);
+        console.log(examdata.exams);
+        this.exam = examdata.exams;
+        // }
+      });
+    });
   }
 
   ngOnInit() {}
   clicked(item) {
-    console.log(item);
-    this.router.navigate(["../examdetail"]);
+    this.local.setItem("examid", item.id).subscribe(data => {
+      this.router.navigate(["../examdetail"]);
+    });
   }
-  btnclick() {
-    this.router.navigate(["examdetail"]);
+  btnclick(event) {
+    event.preventDefault();
+    this.data
+      .setExam(this.user._id, event.target.querySelector("#name").value)
+      .subscribe(data => {
+        console.log(data);
+        window.location.reload();
+      });
   }
 }

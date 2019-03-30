@@ -11,14 +11,14 @@ export class AssessComponent implements OnInit {
   constructor(private router: Router) {}
   students: Student[] = [
     {
-      id: 1,
+      id: "1",
       rollno: 1,
       name: "shekar",
       email: "shekar@gmail.com",
       pass: "shekar"
     },
     {
-      id: 2,
+      id: "2",
       rollno: 2,
       name: "shekar",
       email: "shekar@gmail.com",
@@ -31,6 +31,6 @@ export class AssessComponent implements OnInit {
   }
   getAssess(stud) {
     console.log(stud);
-    this.router.navigate(["assesspage"]);
+    this.router.navigate(["assesspage"], { state: { data: stud } });
   }
 }

@@ -1,5 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { Router } from "@angular/router";
+import { LocalStorage } from "@ngx-pwa/local-storage";
 
 @Component({
   selector: "app-examdetail",
@@ -7,7 +8,11 @@ import { Router } from "@angular/router";
   styleUrls: ["./examdetail.component.scss"]
 })
 export class ExamdetailComponent implements OnInit {
-  constructor(private router: Router) {}
+  constructor(private router: Router, private local: LocalStorage) {
+    this.local.getItem("examid").subscribe(data => {
+      console.log(data);
+    });
+  }
 
   ngOnInit() {}
   addDate() {
