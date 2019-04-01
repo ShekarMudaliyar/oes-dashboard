@@ -6,9 +6,10 @@ import { HttpClient } from "@angular/common/http";
 })
 export class DataserviceService {
   constructor(private http: HttpClient) {}
+  url = "https://oes-backend.herokuapp.com/"; //"http://localhost:3000/";
   authUser(email: string, pass: string) {
     return this.http.post(
-      "http://localhost:3000/auth",
+      `${this.url}auth`,
       {
         email: email,
         pass: pass
@@ -18,14 +19,14 @@ export class DataserviceService {
   }
   getExams(userid) {
     return this.http.post(
-      "http://localhost:3000/getexams",
+      `${this.url}getexams`,
       { id: userid },
       { responseType: "text" }
     );
   }
   setExam(userid, examname) {
     return this.http.post(
-      "http://localhost:3000/setexams",
+      `${this.url}setexams`,
       {
         userid: userid,
         exam: examname
@@ -35,7 +36,7 @@ export class DataserviceService {
   }
   addDate(date, timef, timet, userid, examid) {
     return this.http.post(
-      "http://localhost:3000/setdatetime",
+      `${this.url}setdatetime`,
       {
         date: date,
         timefrom: timef,
@@ -48,7 +49,7 @@ export class DataserviceService {
   }
   getDate(userid, examid) {
     return this.http.post(
-      "http://localhost:3000/getdate",
+      `${this.url}getdate`,
       {
         userid: userid,
         examid: examid
@@ -58,7 +59,7 @@ export class DataserviceService {
   }
   addStud(rollno, name, email, pass, userid, examid) {
     return this.http.post(
-      "http://localhost:3000/addstudent",
+      `${this.url}addstudent`,
       {
         rollno: rollno,
         name: name,
@@ -72,7 +73,7 @@ export class DataserviceService {
   }
   getStud(userid, examid) {
     return this.http.post(
-      "http://localhost:3000/getstudents",
+      `${this.url}getstudents`,
       {
         userid: userid,
         examid: examid
@@ -82,7 +83,7 @@ export class DataserviceService {
   }
   addBrief(ques, ans, userid, examid) {
     return this.http.post(
-      "http://localhost:3000/addbrief",
+      `${this.url}addbrief`,
       {
         ques: ques,
         ans: ans,
@@ -94,7 +95,7 @@ export class DataserviceService {
   }
   addFib(ques, ans, userid, examid) {
     return this.http.post(
-      "http://localhost:3000/addfib",
+      `${this.url}addfib`,
       {
         ques: ques,
         ans: ans,
@@ -106,7 +107,7 @@ export class DataserviceService {
   }
   addCode(ques, userid, examid) {
     return this.http.post(
-      "http://localhost:3000/addcode",
+      `${this.url}addcode`,
       {
         ques: ques,
         userid: userid,
@@ -117,7 +118,7 @@ export class DataserviceService {
   }
   addMcq(ques, op1, op2, op3, op4, userid, examid) {
     return this.http.post(
-      "http://localhost:3000/addmcq",
+      `${this.url}addmcq`,
       {
         ques: ques,
         op1: op1,
@@ -132,7 +133,7 @@ export class DataserviceService {
   }
   getQues(userid, examid) {
     return this.http.post(
-      "http://localhost:3000/getquestions",
+      `${this.url}getquestions`,
       {
         userid: userid,
         examid: examid
