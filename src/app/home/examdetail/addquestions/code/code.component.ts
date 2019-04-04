@@ -29,7 +29,9 @@ export class CodeComponent implements OnInit {
   addCode(event) {
     event.preventDefault();
     let ques = event.target.querySelector("#question").value;
-    this.data.addCode(ques, this.userid, this.examid).subscribe(data => {
+    let marks = event.target.querySelector("#marks").value;
+
+    this.data.addCode(ques, this.userid, this.examid, marks).subscribe(data => {
       console.log(data);
       window.location.reload();
     });

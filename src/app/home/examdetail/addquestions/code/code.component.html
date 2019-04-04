@@ -7,7 +7,8 @@
           ><b>{{ code.question }}</b></label
         ><br />
       </span>
-      <span style="float:right"
+      <span style="float:right">
+        <span style="margin:10px;"> {{ code.marks }} </span
         ><button
           type="button"
           class="btn btn-danger"
@@ -34,6 +35,17 @@
       ></textarea>
     </div>
     <br />
+    <div class="input-group mb-3">
+      <div class="input-group-prepend">
+        <span class="input-group-text" id="basic-addon3">Marks:</span>
+      </div>
+      <input
+        type="text"
+        class="form-control"
+        id="marks"
+        aria-describedby="basic-addon3"
+      />
+    </div>
     <button type="submit" class="btn btn-dark">
       Add
     </button>

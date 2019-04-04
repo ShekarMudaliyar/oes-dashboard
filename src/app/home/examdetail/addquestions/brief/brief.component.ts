@@ -38,9 +38,13 @@ export class BriefComponent implements OnInit {
     event.preventDefault();
     let ques = event.target.querySelector("#question").value;
     let ans = event.target.querySelector("#answer").value;
-    this.data.addBrief(ques, ans, this.userid, this.examid).subscribe(data => {
-      console.log(data);
-      window.location.reload();
-    });
+    let marks = event.target.querySelector("#marks").value;
+
+    this.data
+      .addBrief(ques, ans, this.userid, this.examid, marks)
+      .subscribe(data => {
+        console.log(data);
+        window.location.reload();
+      });
   }
 }

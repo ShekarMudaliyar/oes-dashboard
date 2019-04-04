@@ -1,6 +1,5 @@
 import { Component, OnInit } from "@angular/core";
 import { LocalStorage } from "@ngx-pwa/local-storage";
-import { Student } from "src/app/models/student.model";
 
 @Component({
   selector: "app-assessfib",
@@ -8,10 +7,13 @@ import { Student } from "src/app/models/student.model";
   styleUrls: ["./assessfib.component.scss"]
 })
 export class AssessfibComponent implements OnInit {
-  data;
+  fib;
   constructor(private local: LocalStorage) {
-    this.local.getItem<Student>("stud").subscribe(data => {
-      this.data = data;
+    this.local.getItem("ans").subscribe(ans => {
+      let temp = JSON.parse(ans);
+      // console.log(temp[0].fib);
+      this.fib = temp[0].fib;
+      console.log(this.fib);
     });
   }
 

@@ -35,9 +35,10 @@ export class McqComponent implements OnInit {
     let op2 = event.target.querySelector("#op2").value;
     let op3 = event.target.querySelector("#op3").value;
     let op4 = event.target.querySelector("#op4").value;
+    let marks = event.target.querySelector("#marks").value;
 
     this.data
-      .addMcq(ques, op1, op2, op3, op4, this.userid, this.examid)
+      .addMcq(ques, op1, op2, op3, op4, this.userid, this.examid, marks)
       .subscribe(data => {
         console.log(data);
         window.location.reload();

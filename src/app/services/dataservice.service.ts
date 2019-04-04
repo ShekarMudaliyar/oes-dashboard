@@ -6,7 +6,8 @@ import { HttpClient } from "@angular/common/http";
 })
 export class DataserviceService {
   constructor(private http: HttpClient) {}
-  url = "https://oes-backend.herokuapp.com/"; //"http://localhost:3000/";
+  // url = "https://oes-backend.herokuapp.com/";
+  url = "http://localhost:3000/";
   authUser(email: string, pass: string) {
     return this.http.post(
       `${this.url}auth`,
@@ -81,42 +82,45 @@ export class DataserviceService {
       { responseType: "text" }
     );
   }
-  addBrief(ques, ans, userid, examid) {
+  addBrief(ques, ans, userid, examid, marks) {
     return this.http.post(
       `${this.url}addbrief`,
       {
         ques: ques,
         ans: ans,
         userid: userid,
-        examid: examid
+        examid: examid,
+        marks: marks
       },
       { responseType: "text" }
     );
   }
-  addFib(ques, ans, userid, examid) {
+  addFib(ques, ans, userid, examid, marks) {
     return this.http.post(
       `${this.url}addfib`,
       {
         ques: ques,
         ans: ans,
         userid: userid,
-        examid: examid
+        examid: examid,
+        marks: marks
       },
       { responseType: "text" }
     );
   }
-  addCode(ques, userid, examid) {
+  addCode(ques, userid, examid, marks) {
     return this.http.post(
       `${this.url}addcode`,
       {
         ques: ques,
         userid: userid,
-        examid: examid
+        examid: examid,
+        marks: marks
       },
       { responseType: "text" }
     );
   }
-  addMcq(ques, op1, op2, op3, op4, userid, examid) {
+  addMcq(ques, op1, op2, op3, op4, userid, examid, marks) {
     return this.http.post(
       `${this.url}addmcq`,
       {
@@ -126,7 +130,8 @@ export class DataserviceService {
         op3: op3,
         op4: op4,
         userid: userid,
-        examid: examid
+        examid: examid,
+        marks: marks
       },
       { responseType: "text" }
     );
@@ -137,6 +142,17 @@ export class DataserviceService {
       {
         userid: userid,
         examid: examid
+      },
+      { responseType: "text" }
+    );
+  }
+  getAnswers(userid, examid, studid) {
+    return this.http.post(
+      `${this.url}getanswers`,
+      {
+        userid: userid,
+        examid: examid,
+        studid: studid
       },
       { responseType: "text" }
     );

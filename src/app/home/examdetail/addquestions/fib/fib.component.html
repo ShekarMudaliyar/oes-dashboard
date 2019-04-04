@@ -8,8 +8,11 @@
         ><br />
         <span>-> {{ fib.answer }}</span>
       </span>
-      <span style="float:right"
-        ><button
+      <span style="float:right">
+        <span style="margin:10px;">
+          {{ fib.marks }}
+        </span>
+        <button
           type="button"
           class="btn btn-danger"
           (click)="removeQues(brief.id)"
@@ -43,6 +46,18 @@
         type="text"
         class="form-control"
         id="answer"
+        aria-describedby="basic-addon3"
+      />
+    </div>
+    <br />
+    <div class="input-group mb-3">
+      <div class="input-group-prepend">
+        <span class="input-group-text" id="basic-addon3">Marks:</span>
+      </div>
+      <input
+        type="text"
+        class="form-control"
+        id="marks"
         aria-describedby="basic-addon3"
       />
     </div>
