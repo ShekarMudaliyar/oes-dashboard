@@ -17,6 +17,7 @@ import { AssessfibComponent } from "./home/examdetail/assess/assesspage/assessfi
 import { AssesscodeComponent } from "./home/examdetail/assess/assesspage/assesscode/assesscode.component";
 import { AssessbriefComponent } from "./home/examdetail/assess/assesspage/assessbrief/assessbrief.component";
 import { AssessmcqComponent } from "./home/examdetail/assess/assesspage/assessmcq/assessmcq.component";
+import { ResultpageComponent } from "./home/examdetail/results/resultpage/resultpage.component";
 
 const routes: Routes = [
   { path: "", redirectTo: "/login", pathMatch: "full" },
@@ -46,7 +47,8 @@ const routes: Routes = [
       { path: "assessbrief", component: AssessbriefComponent },
       { path: "assesscode", component: AssesscodeComponent }
     ]
-  }
+  },
+  { path: "resultpage", component: ResultpageComponent }
 ];
 
 @NgModule({

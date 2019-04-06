@@ -1,3 +1,9 @@
+<div
+  *ngIf="isLoading"
+  style="width:100%;display: flex;align-items: center;justify-content: center;"
+>
+  <mat-spinner color="#383838"></mat-spinner>
+</div>
 <div *ngFor="let item of code">
   <div class="card" style="margin:10px;">
     <div class="card-body">
@@ -6,12 +12,23 @@
         {{ item.answer }}
         <br />
         {{ item.gans }}
+        <br />
+        <button style="margin-top:5px;" type="button" class="btn btn-dark">
+          View Output
+        </button>
       </span>
       <span style="float:right">
         {{ item.marks }}
         <br />
         <form>
-          <input type="number" max="{{ item.marks }}" maxlength="3" required />
+          <input
+            type="number"
+            class="form-control"
+            placeholder="Enter Marks"
+            max="{{ item.marks }}"
+            maxlength="3"
+            required
+          />
           <br />
           <button type="submit" class="btn btn-dark">Submit</button>
         </form>

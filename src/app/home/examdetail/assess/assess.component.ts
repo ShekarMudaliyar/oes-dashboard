@@ -13,6 +13,7 @@ export class AssessComponent implements OnInit {
   students;
   userid;
   examid;
+  isLoading = true;
   constructor(
     private router: Router,
     private data: DataserviceService,
@@ -24,6 +25,7 @@ export class AssessComponent implements OnInit {
         this.examid = examid;
         this.data.getStud(this.userid, this.examid).subscribe(date => {
           let temp = JSON.parse(date);
+          this.isLoading = false;
           this.students = temp.students;
         });
       });

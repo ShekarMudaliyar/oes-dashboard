@@ -35,6 +35,12 @@
       Password
     </p>
   </div>
+  <div
+    *ngIf="isLoading"
+    style="width:100%;display: flex;align-items: center;justify-content: center;"
+  >
+    <mat-spinner color="#383838"></mat-spinner>
+  </div>
   <div *ngFor="let stud of students; let i = index" class="list-group">
     <div class="row">
       <p class="list-group-item   col-sm">

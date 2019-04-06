@@ -13,6 +13,8 @@ export class AddstudentsComponent implements OnInit {
   students;
   userid;
   examid;
+  isLoading = true;
+
   constructor(
     private router: Router,
     private local: LocalStorage,
@@ -24,6 +26,8 @@ export class AddstudentsComponent implements OnInit {
         this.examid = examid;
         this.data.getStud(this.userid, this.examid).subscribe(date => {
           let temp = JSON.parse(date);
+          this.isLoading = false;
+
           this.students = temp.students;
         });
       });

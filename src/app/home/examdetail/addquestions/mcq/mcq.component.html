@@ -1,4 +1,4 @@
-<div class="list-view">
+<div *ngIf="!isLoading" class="list-view">
   <div *ngFor="let mcq of mcqs; let i = index" class="list-group">
     <p class="list-group-item list-group-item-action">
       <span style="float:left">
@@ -13,6 +13,8 @@
         <span>-> {{ mcq.op3 }}</span>
         <br />
         <span>-> {{ mcq.op4 }}</span>
+        <br />
+        <span>--> {{ mcq.answer }}</span>
       </span>
       <span style="float:right">
         <span style="margin:10px;"> {{ mcq.marks }} </span
@@ -26,6 +28,12 @@
       </span>
     </p>
   </div>
+</div>
+<div
+  *ngIf="isLoading"
+  style="width:100%;display: flex;align-items: center;justify-content: center;"
+>
+  <mat-spinner color="#383838"></mat-spinner>
 </div>
 <div class="form">
   <label for="date">Add new MCQ</label>
@@ -88,6 +96,20 @@
         id="op4"
         aria-describedby="basic-addon3"
       />
+    </div>
+    <br />
+    <div class="input-group mb-3">
+      <div class="input-group-prepend">
+        <span class="input-group-text" id="basic-addon3">Answer:</span>
+      </div>
+      <input
+        type="text"
+        class="form-control"
+        id="answer"
+        aria-describedby="basic-addon3"
+      />
+
+      <app-alerts></app-alerts>
     </div>
     <br />
     <div class="input-group mb-3">

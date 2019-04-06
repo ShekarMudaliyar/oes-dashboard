@@ -19,15 +19,18 @@ import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { MatInputModule } from "@angular/material/input";
 import { MatButtonModule } from "@angular/material/button";
 import { MatTabsModule } from "@angular/material/tabs";
-import { FibComponent } from './home/examdetail/addquestions/fib/fib.component';
-import { McqComponent } from './home/examdetail/addquestions/mcq/mcq.component';
-import { BriefComponent } from './home/examdetail/addquestions/brief/brief.component';
-import { CodeComponent } from './home/examdetail/addquestions/code/code.component';
-import { AssesspageComponent } from './home/examdetail/assess/assesspage/assesspage.component';
-import { AssessfibComponent } from './home/examdetail/assess/assesspage/assessfib/assessfib.component';
-import { AssessmcqComponent } from './home/examdetail/assess/assesspage/assessmcq/assessmcq.component';
-import { AssessbriefComponent } from './home/examdetail/assess/assesspage/assessbrief/assessbrief.component';
-import { AssesscodeComponent } from './home/examdetail/assess/assesspage/assesscode/assesscode.component';
+import { FibComponent } from "./home/examdetail/addquestions/fib/fib.component";
+import { McqComponent } from "./home/examdetail/addquestions/mcq/mcq.component";
+import { BriefComponent } from "./home/examdetail/addquestions/brief/brief.component";
+import { CodeComponent } from "./home/examdetail/addquestions/code/code.component";
+import { AssesspageComponent } from "./home/examdetail/assess/assesspage/assesspage.component";
+import { AssessfibComponent } from "./home/examdetail/assess/assesspage/assessfib/assessfib.component";
+import { AssessmcqComponent } from "./home/examdetail/assess/assesspage/assessmcq/assessmcq.component";
+import { AssessbriefComponent } from "./home/examdetail/assess/assesspage/assessbrief/assessbrief.component";
+import { AssesscodeComponent } from "./home/examdetail/assess/assesspage/assesscode/assesscode.component";
+import { AlertsModule } from "angular-alert-module";
+import { ResultpageComponent } from "./home/examdetail/results/resultpage/resultpage.component";
+import { MatProgressSpinnerModule } from "@angular/material/progress-spinner";
 
 @NgModule({
   declarations: [
@@ -48,7 +51,8 @@ import { AssesscodeComponent } from './home/examdetail/assess/assesspage/assessc
     AssessfibComponent,
     AssessmcqComponent,
     AssessbriefComponent,
-    AssesscodeComponent
+    AssesscodeComponent,
+    ResultpageComponent
   ],
   imports: [
     BrowserModule,
@@ -60,7 +64,9 @@ import { AssesscodeComponent } from './home/examdetail/assess/assesspage/assessc
     ReactiveFormsModule,
     MatButtonModule,
     MatInputModule,
-    MatTabsModule
+    MatTabsModule,
+    AlertsModule.forRoot(),
+    MatProgressSpinnerModule
   ],
   providers: [],
   bootstrap: [AppComponent]

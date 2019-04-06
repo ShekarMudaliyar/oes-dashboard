@@ -1,0 +1,30 @@
+<nav class=" nav navbar navbar-dark bg-dark ">
+  <div class="navbar-brand" style="width:100%;">
+    <span class="alignleft"
+      ><button class="back-button" (click)="backBtn()">Back</button></span
+    >
+    <span class="aligncenter">{{ stud.name }}</span>
+  </div>
+</nav>
+
+<div
+  *ngIf="isLoading"
+  style="height:100%;width:100%;display: flex;align-items: center;justify-content: center;"
+>
+  <mat-spinner color="#383838"></mat-spinner>
+</div>
+<div *ngIf="!isLoading && isData">
+  fib : {{ result.fib }} / {{ result.fibq }}
+  <br />
+  mcq : {{ result.mcq }} / {{ result.mcqq }}
+  <br />
+  brief : {{ result.brief }} / {{ result.briefq }}
+  <br />
+  code : {{ result.code }} / {{ result.codeq }}
+</div>
+<div
+  *ngIf="!isLoading && !isData"
+  style="width:100%;display: flex;align-items: center;justify-content: center;"
+>
+  <h3>No Data</h3>
+</div>

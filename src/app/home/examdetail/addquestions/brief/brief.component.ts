@@ -9,10 +9,7 @@ import { LocalStorage } from "@ngx-pwa/local-storage";
   styleUrls: ["./brief.component.scss"]
 })
 export class BriefComponent implements OnInit {
-  // briefs: Brief[] = [
-  //   { id: 1, question: "question", answer: "answer" },
-  //   { id: 2, question: "question 2", answer: "answer" }
-  // ];
+  isLoading = true;
   briefs;
   userid;
   examid;
@@ -24,6 +21,7 @@ export class BriefComponent implements OnInit {
         this.data.getQues(this.userid, this.examid).subscribe(date => {
           let temp = JSON.parse(date);
           console.log(temp);
+          this.isLoading = false;
           this.briefs = temp.brief;
         });
       });

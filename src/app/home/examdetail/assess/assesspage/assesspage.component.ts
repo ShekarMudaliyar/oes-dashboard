@@ -2,6 +2,8 @@ import { Component, OnInit } from "@angular/core";
 import { Router } from "@angular/router";
 import { LocalStorage } from "@ngx-pwa/local-storage";
 import { DataserviceService } from "src/app/services/dataservice.service";
+import { ISO8601_DATE_REGEX } from "@angular/common/src/i18n/format_date";
+import { isDataSource } from "@angular/cdk/collections";
 
 @Component({
   selector: "app-assesspage",
@@ -18,6 +20,8 @@ export class AssesspageComponent implements OnInit {
   stud;
   userid;
   examid;
+  isLoading = true;
+  isData = true;
   constructor(
     private router: Router,
     protected local: LocalStorage,
@@ -31,9 +35,12 @@ export class AssesspageComponent implements OnInit {
         this.data
           .getAnswers(this.userid, this.examid, this.stud.id)
           .subscribe(ans => {
-            this.local.setItem("ans", ans).subscribe(ok => {
-              console.log(ans);
-            });
+            let temp = JSON.parse(ans);
+            if (temp.length == 0) {
+              this.isData = false;
+            }
+            this.isLoading = false;
+            this.local.setItem("ans", ans).subscribe(ok => {});
           });
       });
     });

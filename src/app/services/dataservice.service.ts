@@ -120,7 +120,7 @@ export class DataserviceService {
       { responseType: "text" }
     );
   }
-  addMcq(ques, op1, op2, op3, op4, userid, examid, marks) {
+  addMcq(ques, op1, op2, op3, op4, userid, examid, marks, ans) {
     return this.http.post(
       `${this.url}addmcq`,
       {
@@ -131,7 +131,8 @@ export class DataserviceService {
         op4: op4,
         userid: userid,
         examid: examid,
-        marks: marks
+        marks: marks,
+        ans: ans
       },
       { responseType: "text" }
     );
@@ -149,6 +150,73 @@ export class DataserviceService {
   getAnswers(userid, examid, studid) {
     return this.http.post(
       `${this.url}getanswers`,
+      {
+        userid: userid,
+        examid: examid,
+        studid: studid
+      },
+      { responseType: "text" }
+    );
+  }
+  fibAssess(userid, examid, studid, quesid, ques, marks, gmarks) {
+    return this.http.post(
+      `${this.url}assessfib`,
+      {
+        userid: userid,
+        examid: examid,
+        studid: studid,
+        quesid: quesid,
+        ques: ques,
+        marks: marks,
+        gmarks: gmarks
+      },
+      { responseType: "text" }
+    );
+  }
+  briefAssess(userid, examid, studid, quesid, ques, marks, gmarks) {
+    return this.http.post(
+      `${this.url}assessbrief`,
+      {
+        userid: userid,
+        examid: examid,
+        studid: studid,
+        quesid: quesid,
+        ques: ques,
+        marks: marks,
+        gmarks: gmarks
+      },
+      { responseType: "text" }
+    );
+  }
+  mcqAssess(userid, examid, studid, quesid, ques, marks, gmarks) {
+    return this.http.post(
+      `${this.url}assessmcq`,
+      {
+        userid: userid,
+        examid: examid,
+        studid: studid,
+        quesid: quesid,
+        ques: ques,
+        marks: marks,
+        gmarks: gmarks
+      },
+      { responseType: "text" }
+    );
+  }
+  accesstest(userid, examid, studid) {
+    return this.http.post(
+      `${this.url}assessmcq`,
+      {
+        userid: userid,
+        examid: examid,
+        studid: studid
+      },
+      { responseType: "text" }
+    );
+  }
+  results(userid, examid, studid) {
+    return this.http.post(
+      `${this.url}getresult`,
       {
         userid: userid,
         examid: examid,

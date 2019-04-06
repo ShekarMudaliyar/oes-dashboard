@@ -1,4 +1,4 @@
-<div *ngFor="let item of mcq">
+<!-- <div *ngFor="let item of mcq">
   <div class="card" style="margin:10px;">
     <div class="card-body">
       <span style="float:left">
@@ -10,12 +10,26 @@
       <span style="float:right">
         {{ item.marks }}
         <br />
-        <form>
-          <input type="number" max="{{ item.marks }}" maxlength="3" required />
+        <form (submit)="submitmcq($event, item)">
+          <input
+            type="number"
+            class="form-control"
+            placeholder="Enter Marks"
+            max="{{ item.marks }}"
+            maxlength="3"
+            required
+            id="marks"
+          />
           <br />
           <button type="submit" class="btn btn-dark">Submit</button>
         </form>
       </span>
     </div>
   </div>
+</div> -->
+<div class="but" style="margin:10px;text-align:center;">
+  <button type="button" class="btn btn-dark" (click)="autoAssess()">
+    Auto Assess
+  </button>
 </div>
+<app-alerts></app-alerts>

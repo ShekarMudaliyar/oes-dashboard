@@ -1,4 +1,4 @@
-<div class="list-view">
+<div *ngIf="!isLoading" class="list-view">
   <div *ngFor="let fib of fibs; let i = index" class="list-group">
     <p class="list-group-item list-group-item-action">
       <span style="float:left">
@@ -22,6 +22,12 @@
       </span>
     </p>
   </div>
+</div>
+<div
+  *ngIf="isLoading"
+  style="width:100%;display: flex;align-items: center;justify-content: center;"
+>
+  <mat-spinner color="#383838"></mat-spinner>
 </div>
 <div class="form">
   <label for="date">Add new FIB</label>

@@ -1,4 +1,4 @@
-<div class="list-view">
+<div *ngIf="!isLoading" class="list-view">
   <div *ngFor="let brief of briefs; let i = index" class="list-group">
     <p class="list-group-item list-group-item-action">
       <span style="float:left">
@@ -9,8 +9,7 @@
         <span>-> {{ brief.answer }}</span>
       </span>
       <span style="float:right">
-        <span style="margin:10px;">
-          {{ brief.marks }} </span
+        <span style="margin:10px;"> {{ brief.marks }} </span
         ><button
           type="button"
           class="btn btn-danger"
@@ -21,6 +20,12 @@
       </span>
     </p>
   </div>
+</div>
+<div
+  *ngIf="isLoading"
+  style="width:100%;display: flex;align-items: center;justify-content: center;"
+>
+  <mat-spinner color="#383838"></mat-spinner>
 </div>
 <div class="form">
   <label for="date">Add new Brief</label>

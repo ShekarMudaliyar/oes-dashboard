@@ -6,7 +6,24 @@
     <span class="aligncenter"> {{ stud.rollno }} : {{ stud.name }}</span>
   </div>
 </nav>
-<nav mat-tab-nav-bar mat-align-tabs="center" class="tabs">
+<div
+  *ngIf="isLoading"
+  style="width:100%;display: flex;align-items: center;justify-content: center;"
+>
+  <mat-spinner color="#383838"></mat-spinner>
+</div>
+<div
+  *ngIf="!isLoading && !isData"
+  style="width:100%;display: flex;align-items: center;justify-content: center;"
+>
+  <h2>No Data</h2>
+</div>
+<nav
+  *ngIf="!isLoading && isData"
+  mat-tab-nav-bar
+  mat-align-tabs="center"
+  class="tabs"
+>
   <a
     mat-tab-link
     *ngFor="let link of navlinks"

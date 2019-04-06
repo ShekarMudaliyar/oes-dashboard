@@ -1,3 +1,10 @@
+<div
+  *ngIf="isLoading"
+  style="width:100%;display: flex;align-items: center;justify-content: center;"
+>
+  <mat-spinner color="#383838"></mat-spinner>
+</div>
+
 <div *ngFor="let item of fib">
   <div class="card" style="margin:10px;">
     <div class="card-body">
@@ -10,8 +17,16 @@
       <span style="float:right">
         {{ item.marks }}
         <br />
-        <form>
-          <input type="number" max="{{ item.marks }}" maxlength="3" required />
+        <form (submit)="submitfib($event, item)">
+          <input
+            type="number"
+            class="form-control"
+            placeholder="Enter Marks"
+            max="{{ item.marks }}"
+            maxlength="3"
+            required
+            id="marks"
+          />
           <br />
           <button type="submit" class="btn btn-dark">Submit</button>
         </form>
@@ -19,3 +34,4 @@
     </div>
   </div>
 </div>
+<app-alerts></app-alerts>

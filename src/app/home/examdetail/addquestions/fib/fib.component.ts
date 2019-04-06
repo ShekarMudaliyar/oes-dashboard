@@ -12,6 +12,7 @@ export class FibComponent implements OnInit {
   fibs;
   userid;
   examid;
+  isLoading = true;
   constructor(private local: LocalStorage, private data: DataserviceService) {
     this.local.getItem("user").subscribe(user => {
       this.userid = user._id;
@@ -20,6 +21,7 @@ export class FibComponent implements OnInit {
         this.data.getQues(this.userid, this.examid).subscribe(date => {
           let temp = JSON.parse(date);
           console.log(temp);
+          this.isLoading = false;
           this.fibs = temp.fib;
         });
       });

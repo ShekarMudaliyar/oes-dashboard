@@ -12,6 +12,7 @@ export class AdddateComponent implements OnInit {
   userid;
   examid;
   dates;
+  isLoading = true;
   constructor(
     private router: Router,
     private local: LocalStorage,
@@ -23,6 +24,7 @@ export class AdddateComponent implements OnInit {
         this.examid = examid;
         this.data.getDate(this.userid, this.examid).subscribe(date => {
           let temp = JSON.parse(date);
+          this.isLoading = false;
           this.dates = temp.dates;
         });
       });

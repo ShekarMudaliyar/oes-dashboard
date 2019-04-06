@@ -6,7 +6,7 @@
     <span class="aligncenter">Add Date and Time</span>
   </div>
 </nav>
-<div class="list-view">
+<div class="list-view" *ngIf="!isLoading">
   <div *ngFor="let date of dates; let i = index" class="list-group">
     <p class="list-group-item list-group-item-action">
       <span style="float:left">
@@ -24,7 +24,12 @@
     </p>
   </div>
 </div>
-
+<div
+  *ngIf="isLoading"
+  style="width:100%;display: flex;align-items: center;justify-content: center;"
+>
+  <mat-spinner color="#383838"></mat-spinner>
+</div>
 <div class="form-date">
   <label for="date">Add new Date and Time</label>
   <hr />
