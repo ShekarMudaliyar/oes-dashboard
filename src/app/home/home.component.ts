@@ -2,6 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { Router } from "@angular/router";
 import { LocalStorage } from "@ngx-pwa/local-storage";
 import { DataserviceService } from "../services/dataservice.service";
+import { AlertsService } from "angular-alert-module";
 
 class Exams {
   id: string;
@@ -18,6 +19,7 @@ export class HomeComponent implements OnInit {
   constructor(
     private router: Router,
     private local: LocalStorage,
+    private alert: AlertsService,
     private data: DataserviceService
   ) {
     this.local.getItem("user").subscribe(data => {
@@ -32,6 +34,7 @@ export class HomeComponent implements OnInit {
         // }
       });
     });
+    this.alert.setDefaults("timeout", 1.0);
   }
 
   ngOnInit() {}
@@ -42,11 +45,16 @@ export class HomeComponent implements OnInit {
   }
   btnclick(event) {
     event.preventDefault();
-    this.data
-      .setExam(this.user._id, event.target.querySelector("#name").value)
-      .subscribe(data => {
-        console.log(data);
-        window.location.reload();
-      });
+    if (event.target.querySelector("#name").value != "") {
+      this.alert.setMessage("Please Wait", "success");
+      this.data
+        .setExam(this.user._id, event.target.querySelector("#name").value)
+        .subscribe(data => {
+          console.log(data);
+          window.location.reload();
+        });
+    } else {
+      this.alert.setMessage("Exam name Empty", "error");
+    }
   }
 }

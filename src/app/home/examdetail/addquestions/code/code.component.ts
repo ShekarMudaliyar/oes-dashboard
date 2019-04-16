@@ -1,6 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { LocalStorage } from "@ngx-pwa/local-storage";
 import { DataserviceService } from "src/app/services/dataservice.service";
+import { AlertsService } from "angular-alert-module";
 
 @Component({
   selector: "app-code",
@@ -12,7 +13,11 @@ export class CodeComponent implements OnInit {
   userid;
   examid;
   isLoading = true;
-  constructor(private local: LocalStorage, private data: DataserviceService) {
+  constructor(
+    private local: LocalStorage,
+    private alert: AlertsService,
+    private data: DataserviceService
+  ) {
     this.local.getItem("user").subscribe(user => {
       this.userid = user._id;
       this.local.getItem("examid").subscribe(examid => {
@@ -25,6 +30,7 @@ export class CodeComponent implements OnInit {
         });
       });
     });
+    this.alert.setDefaults("timeout", 1.0);
   }
 
   ngOnInit() {}
@@ -32,10 +38,17 @@ export class CodeComponent implements OnInit {
     event.preventDefault();
     let ques = event.target.querySelector("#question").value;
     let marks = event.target.querySelector("#marks").value;
+    if (ques != "" && marks != "") {
+      this.alert.setMessage("Please Wait", "success");
 
-    this.data.addCode(ques, this.userid, this.examid, marks).subscribe(data => {
-      console.log(data);
-      window.location.reload();
-    });
+      this.data
+        .addCode(ques, this.userid, this.examid, marks)
+        .subscribe(data => {
+          console.log(data);
+          window.location.reload();
+        });
+    } else {
+      this.alert.setMessage("Fields Empty", "error");
+    }
   }
 }

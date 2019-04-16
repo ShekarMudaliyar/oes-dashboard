@@ -3,6 +3,7 @@ import { Router } from "@angular/router";
 import { Date } from "../../../models/date.model";
 import { LocalStorage } from "@ngx-pwa/local-storage";
 import { DataserviceService } from "src/app/services/dataservice.service";
+import { AlertsService } from "angular-alert-module";
 @Component({
   selector: "app-adddate",
   templateUrl: "./adddate.component.html",
@@ -16,6 +17,7 @@ export class AdddateComponent implements OnInit {
   constructor(
     private router: Router,
     private local: LocalStorage,
+    private alert: AlertsService,
     private data: DataserviceService
   ) {
     this.local.getItem("user").subscribe(user => {
@@ -29,6 +31,7 @@ export class AdddateComponent implements OnInit {
         });
       });
     });
+    this.alert.setDefaults("timeout", 1.0);
   }
   // dates: Date[] = [
   //   { id: 1, date: "12-4-23", timefrom: "23:23", timeto: "6-54" },
@@ -44,12 +47,16 @@ export class AdddateComponent implements OnInit {
     let date = event.target.querySelector("#date").value;
     let timefrom = event.target.querySelector("#timefrom").value;
     let timeto = event.target.querySelector("#timeto").value;
-
-    this.data
-      .addDate(date, timefrom, timeto, this.userid, this.examid)
-      .subscribe(data => {
-        console.log(data);
-        window.location.reload();
-      });
+    if (date != "" && timefrom != "" && timeto != "") {
+      this.alert.setMessage("Please Wait", "success");
+      this.data
+        .addDate(date, timefrom, timeto, this.userid, this.examid)
+        .subscribe(data => {
+          console.log(data);
+          window.location.reload();
+        });
+    } else {
+      this.alert.setMessage("Fields Empty", "error");
+    }
   }
 }

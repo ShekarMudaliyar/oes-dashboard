@@ -2,6 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { FIB } from "src/app/models/fib.model";
 import { DataserviceService } from "src/app/services/dataservice.service";
 import { LocalStorage } from "@ngx-pwa/local-storage";
+import { AlertsService } from "angular-alert-module";
 
 @Component({
   selector: "app-fib",
@@ -13,7 +14,11 @@ export class FibComponent implements OnInit {
   userid;
   examid;
   isLoading = true;
-  constructor(private local: LocalStorage, private data: DataserviceService) {
+  constructor(
+    private local: LocalStorage,
+    private alert: AlertsService,
+    private data: DataserviceService
+  ) {
     this.local.getItem("user").subscribe(user => {
       this.userid = user._id;
       this.local.getItem("examid").subscribe(examid => {
@@ -26,6 +31,7 @@ export class FibComponent implements OnInit {
         });
       });
     });
+    this.alert.setDefaults("timeout", 1.0);
   }
 
   ngOnInit() {}
@@ -34,12 +40,17 @@ export class FibComponent implements OnInit {
     let ques = event.target.querySelector("#question").value;
     let ans = event.target.querySelector("#answer").value;
     let marks = event.target.querySelector("#marks").value;
+    if (ques != "" && ans != "" && marks != "") {
+      this.alert.setMessage("Please Wait", "success");
 
-    this.data
-      .addFib(ques, ans, this.userid, this.examid, marks)
-      .subscribe(data => {
-        console.log(data);
-        window.location.reload();
-      });
+      this.data
+        .addFib(ques, ans, this.userid, this.examid, marks)
+        .subscribe(data => {
+          console.log(data);
+          window.location.reload();
+        });
+    } else {
+      this.alert.setMessage("Fields Empty", "error");
+    }
   }
 }
