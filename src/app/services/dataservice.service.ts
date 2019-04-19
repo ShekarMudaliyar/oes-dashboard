@@ -225,4 +225,52 @@ export class DataserviceService {
       { responseType: "text" }
     );
   }
+  remMcq(userid, examid, id) {
+    return this.http.post(
+      `${this.url}remove`,
+      {
+        id: id,
+        userid: userid,
+        examid: examid,
+        type: "mcq"
+      },
+      { responseType: "text" }
+    );
+  }
+  remFib(userid, examid, id) {
+    return this.http.post(
+      `${this.url}remove`,
+      {
+        id: id,
+        userid: userid,
+        examid: examid,
+        type: "fib"
+      },
+      { responseType: "text" }
+    );
+  }
+  remBrief(userid, examid, id) {
+    return this.http.post(
+      `${this.url}remove`,
+      {
+        id: id,
+        userid: userid,
+        examid: examid,
+        type: "brief"
+      },
+      { responseType: "text" }
+    );
+  }
+  remCode(userid, examid, id) {
+    return this.http.post(
+      `${this.url}remove`,
+      {
+        id: id,
+        userid: userid,
+        examid: examid,
+        type: "code"
+      },
+      { responseType: "text" }
+    );
+  }
 }

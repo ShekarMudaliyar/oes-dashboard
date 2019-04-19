@@ -37,6 +37,10 @@ export class BriefComponent implements OnInit {
   ngOnInit() {}
   removeQues(i) {
     console.log(i);
+    this.data.remBrief(this.userid, this.examid, i.id).subscribe(data => {
+      // console.log(data);
+      window.location.reload();
+    });
   }
   addBrief(event) {
     event.preventDefault();

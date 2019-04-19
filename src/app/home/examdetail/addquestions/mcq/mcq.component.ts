@@ -57,4 +57,11 @@ export class McqComponent implements OnInit {
       this.alert.setMessage("No matching answer", "error");
     }
   }
+  removeQues(mcq) {
+    console.log(mcq);
+    this.data.remMcq(this.userid, this.examid, mcq.id).subscribe(data => {
+      // console.log(data);
+      window.location.reload();
+    });
+  }
 }

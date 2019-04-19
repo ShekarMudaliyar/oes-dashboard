@@ -34,6 +34,13 @@ export class CodeComponent implements OnInit {
   }
 
   ngOnInit() {}
+  removeQues(code) {
+    console.log(code);
+    this.data.remCode(this.userid, this.examid, code.id).subscribe(data => {
+      // console.log(data);
+      window.location.reload();
+    });
+  }
   addCode(event) {
     event.preventDefault();
     let ques = event.target.querySelector("#question").value;

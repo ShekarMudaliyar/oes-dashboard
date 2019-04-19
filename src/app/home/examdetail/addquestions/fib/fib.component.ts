@@ -35,6 +35,13 @@ export class FibComponent implements OnInit {
   }
 
   ngOnInit() {}
+  removeQues(fib) {
+    console.log(fib);
+    this.data.remFib(this.userid, this.examid, fib.id).subscribe(data => {
+      // console.log(data);
+      window.location.reload();
+    });
+  }
   addFib(event) {
     event.preventDefault();
     let ques = event.target.querySelector("#question").value;
