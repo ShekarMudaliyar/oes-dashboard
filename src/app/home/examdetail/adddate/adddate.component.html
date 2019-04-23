@@ -34,7 +34,80 @@
   <label for="date">Add new Date and Time</label>
   <hr />
   <form (submit)="addDate($event)">
+    <!-- <div class="input-group mb-3">
+      <div class="input-group-prepend">
+        <span class="input-group-text" id="basic-addon3">Date and Time:</span>
+      </div>
+      <input
+        [owlDateTimeTrigger]="dt"
+        [owlDateTime]="dt"
+        [(ngModel)]="datetime"
+        id="datetime"
+        [min]="datetime"
+        hour12Timer="true"
+        class="form-control"
+      />
+      <owl-date-time
+        #dt
+        [startAt]="datetime"
+        hour12Timer="false"
+      ></owl-date-time>
+      <br />
+    </div> -->
     <div class="input-group mb-3">
+      <div class="input-group-prepend">
+        <span class="input-group-text" id="basic-addon3">Date and Time:</span>
+      </div>
+      <input
+        placeholder="Date"
+        [(ngModel)]="datetime"
+        [owlDateTimeTrigger]="dt1"
+        [owlDateTime]="dt1"
+        id="date"
+        [min]="datetime"
+        class="form-control"
+      />
+      <owl-date-time [pickerType]="'calendar'" #dt1></owl-date-time>
+    </div>
+    <div class="input-group mb-3">
+      <div class="input-group-prepend">
+        <span class="input-group-text" id="basic-addon3">Time from:</span>
+      </div>
+      <input
+        placeholder="Time from"
+        [(ngModel)]="min"
+        class="form-control"
+        id="timefrom"
+        [min]="min"
+        [owlDateTimeTrigger]="dt2"
+        [owlDateTime]="dt2"
+      />
+      <owl-date-time
+        [pickerType]="'timer'"
+        hour12Timer="true"
+        #dt2
+      ></owl-date-time>
+    </div>
+    <div class="input-group mb-3">
+      <div class="input-group-prepend">
+        <span class="input-group-text" id="basic-addon3">Time to:</span>
+      </div>
+      <input
+        placeholder="Time to"
+        [(ngModel)]="min"
+        class="form-control"
+        id="timeto"
+        [min]="min"
+        [owlDateTimeTrigger]="dt3"
+        [owlDateTime]="dt3"
+      />
+      <owl-date-time
+        [pickerType]="'timer'"
+        hour12Timer="true"
+        #dt3
+      ></owl-date-time>
+    </div>
+    <!-- <div class="input-group mb-3">
       <div class="input-group-prepend">
         <span class="input-group-text" id="basic-addon3">Date:</span>
       </div>
@@ -66,7 +139,7 @@
         id="timeto"
         aria-describedby="basic-addon3"
       />
-    </div>
+    </div> -->
 
     <button type="submit" class="btn btn-dark">
       Add Date

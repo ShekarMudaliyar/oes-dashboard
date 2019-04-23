@@ -31,6 +31,7 @@ import { AssesscodeComponent } from "./home/examdetail/assess/assesspage/assessc
 import { AlertsModule } from "angular-alert-module";
 import { ResultpageComponent } from "./home/examdetail/results/resultpage/resultpage.component";
 import { MatProgressSpinnerModule } from "@angular/material/progress-spinner";
+import { OwlDateTimeModule, OwlNativeDateTimeModule } from "ng-pick-datetime";
 
 @NgModule({
   declarations: [
@@ -66,7 +67,9 @@ import { MatProgressSpinnerModule } from "@angular/material/progress-spinner";
     MatInputModule,
     MatTabsModule,
     AlertsModule.forRoot(),
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    OwlDateTimeModule,
+    OwlNativeDateTimeModule
   ],
   providers: [],
   bootstrap: [AppComponent]
