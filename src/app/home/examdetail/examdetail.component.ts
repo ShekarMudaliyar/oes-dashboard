@@ -8,8 +8,10 @@ import { LocalStorage } from "@ngx-pwa/local-storage";
   styleUrls: ["./examdetail.component.scss"]
 })
 export class ExamdetailComponent implements OnInit {
+  examid;
   constructor(private router: Router, private local: LocalStorage) {
     this.local.getItem("examid").subscribe(data => {
+      this.examid = data;
       console.log(data);
     });
   }
