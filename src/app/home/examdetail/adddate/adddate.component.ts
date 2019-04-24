@@ -97,4 +97,11 @@ export class AdddateComponent implements OnInit {
       this.alert.setMessage("Fields Empty", "error");
     }
   }
+  removeDate(date) {
+    console.log(date);
+    this.data.remDate(this.userid, this.examid, date.id).subscribe(data => {
+      // console.log(data);
+      window.location.reload();
+    });
+  }
 }

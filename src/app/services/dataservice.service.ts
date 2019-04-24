@@ -188,6 +188,21 @@ export class DataserviceService {
       { responseType: "text" }
     );
   }
+  codeAssess(userid, examid, studid, quesid, ques, marks, gmarks) {
+    return this.http.post(
+      `${this.url}assesscode`,
+      {
+        userid: userid,
+        examid: examid,
+        studid: studid,
+        quesid: quesid,
+        ques: ques,
+        marks: marks,
+        gmarks: gmarks
+      },
+      { responseType: "text" }
+    );
+  }
   mcqAssess(userid, examid, studid, quesid, ques, marks, gmarks) {
     return this.http.post(
       `${this.url}assessmcq`,
@@ -269,6 +284,17 @@ export class DataserviceService {
         userid: userid,
         examid: examid,
         type: "code"
+      },
+      { responseType: "text" }
+    );
+  }
+  remDate(userid, examid, id) {
+    return this.http.post(
+      `${this.url}removedate`,
+      {
+        id: id,
+        userid: userid,
+        examid: examid
       },
       { responseType: "text" }
     );

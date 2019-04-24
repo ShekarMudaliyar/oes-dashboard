@@ -44,17 +44,41 @@ export class McqComponent implements OnInit {
     let op4 = event.target.querySelector("#op4").value;
     let ans = event.target.querySelector("#answer").value;
     let marks = event.target.querySelector("#marks").value;
-    if (op1 == ans || op2 == ans || op3 == ans || op4 == ans) {
-      console.log("match");
-      this.data
-        .addMcq(ques, op1, op2, op3, op4, this.userid, this.examid, marks, ans)
-        .subscribe(data => {
-          console.log(data);
-          window.location.reload();
-        });
+    if (
+      ques != "" &&
+      op1 != "" &&
+      op2 != "" &&
+      op3 != "" &&
+      op4 != "" &&
+      ans != "" &&
+      marks != ""
+    ) {
+      this.alert.setMessage("Done", "success");
+
+      if (op1 == ans || op2 == ans || op3 == ans || op4 == ans) {
+        console.log("match");
+        this.data
+          .addMcq(
+            ques,
+            op1,
+            op2,
+            op3,
+            op4,
+            this.userid,
+            this.examid,
+            marks,
+            ans
+          )
+          .subscribe(data => {
+            console.log(data);
+            window.location.reload();
+          });
+      } else {
+        console.log("no match");
+        this.alert.setMessage("No matching answer", "error");
+      }
     } else {
-      console.log("no match");
-      this.alert.setMessage("No matching answer", "error");
+      this.alert.setMessage("fields empty", "error");
     }
   }
   removeQues(mcq) {
