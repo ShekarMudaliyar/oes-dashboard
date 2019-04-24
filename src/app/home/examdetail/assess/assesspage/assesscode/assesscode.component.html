@@ -13,7 +13,12 @@
         <br />
         {{ item.gans }}
         <br />
-        <button style="margin-top:5px;" type="button" class="btn btn-dark">
+        <button
+          style="margin-top:5px;"
+          (click)="saveFile(item.gans)"
+          type="button"
+          class="btn btn-dark"
+        >
           View Output
         </button>
       </span>

@@ -2,6 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { LocalStorage } from "@ngx-pwa/local-storage";
 import { AlertsService } from "angular-alert-module";
 import { DataserviceService } from "src/app/services/dataservice.service";
+import { FileSaverService } from "ngx-filesaver";
 
 @Component({
   selector: "app-assesscode",
@@ -14,10 +15,12 @@ export class AssesscodeComponent implements OnInit {
   userid;
   examid;
   studid;
+  name;
   constructor(
     private local: LocalStorage,
     private alert: AlertsService,
-    private data: DataserviceService
+    private data: DataserviceService,
+    private _FileSaverService: FileSaverService
   ) {
     this.local.getItem("ans").subscribe(ans => {
       let temp = JSON.parse(ans);
@@ -31,6 +34,7 @@ export class AssesscodeComponent implements OnInit {
 
     this.local.getItem("user").subscribe(user => {
       this.userid = user._id;
+
       this.local.getItem("examid").subscribe(examid => {
         this.examid = examid;
       });
@@ -38,6 +42,11 @@ export class AssesscodeComponent implements OnInit {
     this.alert.setDefaults("timeout", 1.0);
   }
   ngOnInit() {}
+  saveFile(ansCode) {
+    console.log(ansCode, this.name);
+    const txtBlob = new Blob([ansCode], { type: "text" });
+    this._FileSaverService.save(txtBlob, "Code.html");
+  }
   submitcode(event, item) {
     event.preventDefault();
     console.log(item);

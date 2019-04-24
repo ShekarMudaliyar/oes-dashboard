@@ -32,6 +32,7 @@ import { AlertsModule } from "angular-alert-module";
 import { ResultpageComponent } from "./home/examdetail/results/resultpage/resultpage.component";
 import { MatProgressSpinnerModule } from "@angular/material/progress-spinner";
 import { OwlDateTimeModule, OwlNativeDateTimeModule } from "ng-pick-datetime";
+import { FileSaverModule } from "ngx-filesaver";
 
 @NgModule({
   declarations: [
@@ -69,7 +70,8 @@ import { OwlDateTimeModule, OwlNativeDateTimeModule } from "ng-pick-datetime";
     AlertsModule.forRoot(),
     MatProgressSpinnerModule,
     OwlDateTimeModule,
-    OwlNativeDateTimeModule
+    OwlNativeDateTimeModule,
+    FileSaverModule
   ],
   providers: [],
   bootstrap: [AppComponent]
